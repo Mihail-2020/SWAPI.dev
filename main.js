@@ -9,7 +9,7 @@ async function fetchData(url) {
 const SHIPS_PAGES = 4;
 const SHIPS_URL = 'https://swapi.dev/api/starships/?page=';
 
-function fetchAllShips() {
+async function fetchAllShips() {
 	shipsTableElement.innerHTML = ''
 
   for (let i = 1; i < SHIPS_PAGES; i++) {
