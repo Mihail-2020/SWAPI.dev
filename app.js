@@ -1,4 +1,5 @@
 const shipsTableElement = document.querySelector('#tbody');
+const sectionBlock = document.querySelector('#section-block');
 
 
 async function fetchData(url) {
@@ -40,17 +41,42 @@ async function fetchData(url) {
 // updateShipsButtonElement.addEventListener('click', fetchAllShips);
 
 
+const SW_API = {
+  films: "https://swapi.dev/api/films/",
+  people: "https://swapi.dev/api/people/",
+  planets: "https://swapi.dev/api/planets/",
+  species: "https://swapi.dev/api/species/",
+  starships: "https://swapi.dev/api/starships/",
+  vehicles: "https://swapi.dev/api/vehicles/"
+} 
+
+const titleTableList = {
+  films: {
+    name: ""
+  },
+  people: {
+
+  },
+  planets: {
+    
+  },
+  species: {
+
+  },
+  starships: {
+
+  },
+  vehicles: {
+
+  }
+}
 
 
 
 
 
 
-
-
-
-function renderSection() {
-
+function renderSection(section) {
 
 const sectionElement = `
     <div class="table-block">
@@ -70,5 +96,5 @@ const sectionElement = `
     </div>
 `;
 
-document.body.insertAdjacentHTML('beforeend', sectionElement)
+sectionBlock.insertAdjacentHTML('beforeend', sectionElement)
 }
