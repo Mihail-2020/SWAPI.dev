@@ -51,24 +51,42 @@ const SW_API = {
 } 
 
 const titleTableList = {
-  films: {
-    name: ""
-  },
-  people: {
-
-  },
-  planets: {
-    
-  },
-  species: {
-
-  },
-  starships: {
-
-  },
-  vehicles: {
-
-  }
+  films: `
+    <th>Название</th>
+    <th>Номер эпизода</th>
+    <th>Имя режиссера</th>
+    <th>Дата релиза</th>
+  `,
+  people: `
+    <th>Имя человека</th>
+    <th>Год рождения</th>
+    <th>Пол</th>
+    <th>Рост</th>
+  `,
+  planets: `
+    <th>Название планеты</th>
+    <th>Диаметр</th>
+    <th>Климат</th>
+    <th>Рельеф </th>
+  `,
+  species: `
+    <th>Название вида</th>
+    <th>Классификация</th>
+    <th>Обозначение</th>
+    <th>Рост вида</th>
+  `,
+  starships: `
+    <th>Имя</th>
+    <th>Модель</th>
+    <th>Класс звездолета</th>
+    <th>Производитель</th>
+  `,
+  vehicles: `
+    <th>Имя автомобиля</th>
+    <th>Модель</th>
+    <th>Класс автомобиля</th>
+    <th>Производитель автомобиля</th>
+  `
 }
 
 
@@ -78,15 +96,14 @@ const titleTableList = {
 
 function renderSection(section) {
 
+const result = section in titleTableList ? titleTableList[section] : 'not in object'
+
 const sectionElement = `
     <div class="table-block">
     <table>
         <thead>
           <tr>
-            <th>Имя</th>
-            <th>Модель</th>
-            <th>Класс звездолета</th>
-            <th>Производитель</th>
+            ${result}
           </tr>
         </thead>
         <tbody id="tbody">
