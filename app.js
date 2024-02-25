@@ -1,45 +1,22 @@
-const shipsTableElement = document.querySelector('#tbody');
+const tableElement = document.querySelector('#tbody');
 const sectionBlock = document.querySelector('#section-block');
+const sectionStarWars = document.querySelector('#star-wars');
 
+sectionStarWars.addEventListener('click', handelSectionClick);
 
-async function fetchData(url) {
-  const response = await fetch(url);
-  return response.json();
+function handelSectionClick(event) {
+  let section = event.target.id;
+  sectionBlock.innerHTML = '';
+
+  renderSection(section);
+  fetchAll(section);
 }
 
 
-// const SHIPS_PAGES = 4;
-// const SHIPS_URL = 'https://swapi.dev/api/starships/?page=';
-
-// async function fetchAllShips() {
-// 	shipsTableElement.innerHTML = ''
-
-//   for (let i = 1; i < SHIPS_PAGES; i++) {
-//     let url = SHIPS_URL + i;
-
-//     try {
-//       const data = await fetchData(url);
-//       const array = data.results;
-
-//       for (let item in array) {
-//         const tr = document.createElement("tr");
-//         tr.innerHTML = `
-//         <td>${array[item].name}</td>
-//         <td>${array[item].model}</td>
-//         <td>${array[item].starship_class}</td>
-//         <td>${array[item].manufacturer}</td>
-//       `;
-//         shipsTableElement.appendChild(tr);
-//       }
-//     } catch (error) {
-//       console.error(error);
-//     }
-//   }
-// }
-
-// fetchAllShips();
-// updateShipsButtonElement.addEventListener('click', fetchAllShips);
-
+async function fetchData(url) {
+  const response = await fetch(`${url}`);
+  return response.json();
+}
 
 const SW_API = {
   films: "https://swapi.dev/api/films/",
@@ -48,7 +25,44 @@ const SW_API = {
   species: "https://swapi.dev/api/species/",
   starships: "https://swapi.dev/api/starships/",
   vehicles: "https://swapi.dev/api/vehicles/"
-} 
+}
+
+const PAGES = 4;
+
+async function fetchAll(section) {
+	// tableElement.innerHTML = ''
+
+
+  for (let i = 1; i < PAGES; i++) {
+    let url = SW_API[`${section}`] + i;
+
+    console.log(url);
+
+    try {
+      const data = await fetchData(url);
+      const array = data.results;
+
+      console.log(array);
+
+      // for (let item in array) {
+      //   const tr = document.createElement("tr");
+      //   tr.innerHTML = `
+      //   <td>${array[item].name}</td>
+      //   <td>${array[item].model}</td>
+      //   <td>${array[item].starship_class}</td>
+      //   <td>${array[item].manufacturer}</td>
+      // `;
+      //   tableElement.appendChild(tr);
+      // }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+}
+
+// fetchAll();
+// updateShipsButtonElement.addEventListener('click', fetchAllShips);
+
 
 const titleTableList = {
   films: `
