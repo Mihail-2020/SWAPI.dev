@@ -55,7 +55,7 @@ async function fetchAll(section) {
       //   tableElement.appendChild(tr);
       // }
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   }
 }
